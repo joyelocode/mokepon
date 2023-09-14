@@ -1,48 +1,47 @@
 // 1 es piedra, 2 es papel, 3 es tijera
 
-// Declaración de las variables 'jugador' y 'pc' e inicialización de 'jugador' a 0 y 'pc' a 2.
+// Definición de la función 'aleatorio' que genera un número aleatorio entre 'min' y 'max'.
+function aleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-let jugador = 0; 
-// Variable para almacenar la elección del jugador
-let pc = 2; 
-// Variable para almacenar la elección de la computadora (predefinida a 2, que representa papel)
+// Definición de la función 'eleccion' que toma la elección del jugador como argumento y devuelve un mensaje explicando la elección.
+function eleccion(jugada) {
+    let resultado = "";
+       
+    // Comienza la comprobación de la elección del jugador.
+    if (jugada == 1) {
+        // Si el jugador eligió 1, se asigna el mensaje "Piedra 🥌" a la variable 'resultado'.
+        resultado = "Piedra 🥌";
+    } else if (jugada == 2) {
+        // Si el jugador eligió 2, se asigna el mensaje "Papel 📜" a la variable 'resultado'.
+        resultado = "Papel 📜";
+    } else if (jugada == 3) {
+        // Si el jugador eligió 3, se asigna el mensaje "Tijera ✂" a la variable 'resultado'.
+        resultado = "Tijera ✂";
+    } else {
+        // Si el jugador eligió cualquier otro número diferente de 1, 2 o 3, se asigna el mensaje "¡MAL ELEGIDO!" a la variable 'resultado'.
+        resultado = "¡MAL ELEGIDO!";
+    }
+    
+    // Se devuelve el valor almacenado en la variable 'resultado'.
+    return resultado;
+} 
+
+// Inicialización de las variables 'jugador' y 'pc' con un valor inicial de 0 y una elección aleatoria de la computadora, respectivamente.
+let jugador = 0;
+let pc = aleatorio(1, 3);
 
 // Se solicita al usuario que ingrese su elección y se almacena en la variable 'jugador'.
 jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera");
 
-// Comienza la comprobación de la elección del jugador.
-if (jugador == 1) {
-    // Si el jugador eligió 1, se muestra un mensaje que dice que eligió piedra.
-    alert("Elegiste 🥌");
-} else if (jugador == 2) {
-    // Si el jugador eligió 2, se muestra un mensaje que dice que eligió papel.
-    alert("Elegiste 📜");
-} else if (jugador == 3) {
-    // Si el jugador eligió 3, se muestra un mensaje que dice que eligió tijera.
-    alert("Elegiste ✂");
-} else {
-    // Si el jugador eligió cualquier otro número diferente de 1, 2 o 3, se muestra un mensaje que dice que perdió.
-    alert("¡Elegiste Perder!");
-}
+// Se muestra un mensaje que indica la elección aleatoria de la computadora y la elección del jugador usando la función 'eleccion'.
+alert("PC elige: " + eleccion(pc));
+alert("Tu eliges: " + eleccion(jugador));
 
-// Comienza la comprobación de la elección del pc.
-if (pc == 1) {
-    // Si el pc eligió 1, se muestra un mensaje que dice que eligió piedra.
-    alert("El Pc eleigió 🥌");
-} else if (pc == 2) {
-    // Si el pc eligió 2, se muestra un mensaje que dice que eligió papel.
-    alert("El Pc eligió📜");
-} else if (pc == 3) {
-    // Si el pc eligió 3, se muestra un mensaje que dice que eligió tijera.
-    alert("El Pc eligió ✂");
-} else {
-    // Si el pc eligió cualquier otro número diferente de 1, 2 o 3, se muestra un mensaje que dice que perdió.
-    alert("¡El Pc eligió Perder!");
-}
-
-// Comienza el combate se verifica si la elección del jugador (jugador) es igual a la elección de la computadora (pc).
+// Comienza la comprobación de quién ganó el juego.
 if (pc == jugador) {
-    // Si son iguales, se muestra un mensaje de empate.
+    // Si las elecciones son iguales, se muestra un mensaje de empate.
     alert("EMPATE");
 } else if (jugador == 1 && pc == 3) {
     // Si el jugador eligió piedra (1) y la computadora eligió tijera (3), el jugador gana.
@@ -57,4 +56,3 @@ if (pc == jugador) {
     // Si ninguna de las condiciones anteriores se cumple, significa que el jugador perdió.
     alert("PERDISTE");
 }
-
