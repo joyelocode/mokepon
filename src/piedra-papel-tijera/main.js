@@ -28,31 +28,48 @@ function eleccion(jugada) {
     return resultado;
 } 
 
-// Inicialización de las variables 'jugador' y 'pc' con un valor inicial de 0 y una elección aleatoria de la computadora, respectivamente.
+// Inicialización de las variables 'jugador' y 'pc' con un valor inicial de 0, y 'triunfos' y 'perdidas' con un valor inicial de 0.
 let jugador = 0;
-let pc = aleatorio(1, 3);
+let pc = 0;
+let triunfos = 0;
+let perdidas = 0;
 
-// Se solicita al usuario que ingrese su elección y se almacena en la variable 'jugador'.
-jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera");
+// El juego se ejecuta en un bucle 'while' hasta que uno de los jugadores alcance 3 triunfos o 3 derrotas.
+while (triunfos < 3 && perdidas < 3) {
+    // Se genera una elección aleatoria para la computadora (pc).
+    pc = aleatorio(1, 3);
 
-// Se muestra un mensaje que indica la elección aleatoria de la computadora y la elección del jugador usando la función 'eleccion'.
-alert("PC elige: " + eleccion(pc));
-alert("Tu eliges: " + eleccion(jugador));
+    // Se solicita al usuario que ingrese su elección y se almacena en la variable 'jugador'.
+    jugador = prompt("Elige: 1 para piedra, 2 para papel, 3 para tijera");
 
-// Comienza la comprobación de quién ganó el juego.
-if (pc == jugador) {
-    // Si las elecciones son iguales, se muestra un mensaje de empate.
-    alert("EMPATE");
-} else if (jugador == 1 && pc == 3) {
-    // Si el jugador eligió piedra (1) y la computadora eligió tijera (3), el jugador gana.
-    alert("GANASTE");
-} else if (jugador == 2 && pc == 1) {
-    // Si el jugador eligió papel (2) y la computadora eligió piedra (1), el jugador gana.
-    alert("GANASTE");
-} else if (jugador == 3 && pc == 2) {
-    // Si el jugador eligió tijera (3) y la computadora eligió papel (2), el jugador gana.
-    alert("GANASTE");
-} else {
-    // Si ninguna de las condiciones anteriores se cumple, significa que el jugador perdió.
-    alert("PERDISTE");
+    // Se muestran los resultados de las elecciones del jugador y la computadora utilizando la función 'eleccion'.
+    alert("PC elige: " + eleccion(pc));
+    alert("Tu eliges: " + eleccion(jugador));
+
+    // Comienza la comprobación de quién ganó la ronda.
+    if (pc == jugador) {
+        // Si las elecciones son iguales, se muestra un mensaje de empate.
+        alert("EMPATE");
+    } else if (jugador == 1 && pc == 3) {
+        // Si el jugador eligió piedra (1) y la computadora eligió tijera (3), el jugador gana y se incrementa el contador de triunfos.
+        alert("GANASTE");
+        triunfos = triunfos + 1;
+    } else if (jugador == 2 && pc == 1) {
+        // Si el jugador eligió papel (2) y la computadora eligió piedra (1), el jugador gana y se incrementa el contador de triunfos.
+        alert("GANASTE");
+        triunfos = triunfos + 1;
+    } else if (jugador == 3 && pc == 2) {
+        // Si el jugador eligió tijera (3) y la computadora eligió papel (2), el jugador gana y se incrementa el contador de triunfos.
+        alert("GANASTE");
+        triunfos = triunfos + 1;
+    } else {
+        // Si ninguna de las condiciones anteriores se cumple, significa que el jugador perdió y se incrementa el contador de derrotas.
+        alert("PERDISTE");
+        perdidas = perdidas + 1;
+    }
 }
+
+// Al final del juego, se muestra un mensaje que indica cuántas veces ganó el jugador y cuántas veces perdió.
+alert("Ganaste " + triunfos + " veces. Perdiste " + perdidas + " veces.");
+
+
