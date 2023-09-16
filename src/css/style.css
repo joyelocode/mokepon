@@ -1,0 +1,71 @@
+/* Importa las fuentes de Google Fonts 'Fredoka One' y 'Poppins' */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@300&display=swap');
+
+/* Estilo general para el cuerpo del documento */
+body {
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' */
+    background-color: #041562; /* Establece el color de fondo */
+}
+
+/* Estilo para el contenedor de selección de mascota */
+#seleccionar-mascota {
+    display: flex; /* Usa flexbox para alinear elementos internos */
+    flex-direction: column; /* Establece la dirección de la columna */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+}
+
+/* Estilo para el título */
+.titulo {
+    color: #fff; /* Establece el color de texto en blanco */
+    font-size: 32px; /* Tamaño de fuente */
+    font-family: 'Fredoka One', cursive; /* Aplica la fuente 'Fredoka One' */
+}
+
+/* Estilo para el subtítulo */
+.subtitulo {
+    color: #fff; /* Establece el color de texto en blanco */
+    font-size: 20px; /* Tamaño de fuente */
+}
+
+/* Estilo para el contenedor de tarjetas */
+.tarjetas {
+    display: flex; /* Usa flexbox para alinear elementos internos */
+    gap: 10px; /* Establece el espacio entre elementos */
+}
+
+/* Estilo para cada tarjeta de mascota */
+.tarjeta-de-mokepon {
+    width: 180px; /* Ancho de la tarjeta */
+    height: 100px; /* Altura de la tarjeta */
+    background: #11468F; /* Color de fondo */
+    padding: 10px; /* Espacio interno */
+    box-sizing: border-box; /* Establece el modelo de caja para incluir el relleno en el tamaño total */
+    border-radius: 20px; /* Borde redondeado */
+    display: flex; /* Usa flexbox para centrar elementos internos */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    color: #fff; /* Establece el color de texto en blanco */
+}
+
+/* Estilo para las imágenes dentro de las tarjetas */
+.tarjeta-de-mokepon img {
+    width: 80px; /* Ancho de la imagen */
+}
+
+/* Estilo para el botón de selección de mascota */
+#boton-mascota {
+    width: 180px; /* Ancho del botón */
+    height: 40px; /* Altura del botón */
+    border-radius: 20px; /* Borde redondeado */
+    background: transparent; /* Fondo transparente */
+    border: 2px solid #fff; /* Borde sólido blanco */
+    color: #fff; /* Establece el color de texto en blanco */
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' */
+    margin-top: 30px; /* Margen superior */
+}
+
+/* Oculta todos los elementos de entrada de radio (no visibles en la página) */
+input {
+    display: none;
+}
