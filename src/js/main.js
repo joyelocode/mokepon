@@ -39,7 +39,7 @@ function seleccionarMascotaJugador() {
     sectionSeleccionarMascota.style.display = 'none';
 
     let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
-    sectionSeleccionarAtaque.style.display = 'block';
+    sectionSeleccionarAtaque.style.display = 'flex';
     
     // Obtiene los elementos de entrada de radio que representan las opciones de mascota del jugador.
     let inputHipodoge = document.getElementById('hipodoge');
@@ -145,30 +145,34 @@ function combate() {
 // Esta función verifica si el juego ha terminado al comprobar las vidas del jugador y del enemigo.
 function revisarVidas() {
     if (vidasJugador == 0) {
-        crearMensajeFinal('LO SIENTO PERDISTE, ☹☹☹');
+        crearMensajeFinal('LO SIENTO PERDISTE');
     } else if (vidasEnemigo == 0) {
-        crearMensajeFinal('FELICITACIONES GANASTE! 🎉🎉🎉');
+        crearMensajeFinal('FELICITACIONES GANASTE!');
     };
 };
 
 // Esta función muestra un mensaje en la sección de mensajes.
-function crearMensaje(resultadoCombate) {
-    let sectionMensajes = document.getElementById('mensajes');
+function crearMensaje(resultado) {
+    let sectionMensajes = document.getElementById('resultado');
+    let ataquesDelJugador = document.getElementById('ataques-del-jugador');
+    let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo');
 
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = 'Tu mascota atacó con ' + ataqueJugador + ', la mascota del enemigo atacó con ' + ataqueEnemigo + ' - ' + resultadoCombate + ' 🎉🎉🎉';
+    let nuevoAtaqueDelJugador = document.createElement('p');
+    let nuevoAtaqueDelEnemigo = document.createElement('p');
 
-    sectionMensajes.appendChild(parrafo);
+    sectionMensajes.innerHTML = resultado;
+    nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
+    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo;
+
+    ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
+    ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
 };
 
 // Esta función muestra el mensaje final del juego y deshabilita los botones de ataque.
 function crearMensajeFinal(resultadoFinal) {
-    let sectionMensajes = document.getElementById('mensajes');
+    let sectionMensajes = document.getElementById('resultado');
 
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = resultadoFinal;
-
-    sectionMensajes.appendChild(parrafo);
+    sectionMensajes.innerHTML = resultadoFinal;
 
     let botonAgua = document.getElementById('boton-agua');
     botonAgua.disabled = true;

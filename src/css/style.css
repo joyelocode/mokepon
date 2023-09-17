@@ -29,7 +29,7 @@ body {
 }
 
 /* Estilo para el contenedor de tarjetas */
-.tarjetas {
+.tarjetas, .tarjetas-ataques {
     display: flex; /* Usa flexbox para alinear elementos internos */
     gap: 10px; /* Establece el espacio entre elementos */
 }
@@ -68,4 +68,73 @@ body {
 /* Oculta todos los elementos de entrada de radio (no visibles en la página) */
 input {
     display: none;
+}
+
+/* Estilo para las etiquetas de entrada de radio seleccionadas seguidas de una etiqueta */
+input:checked + label {
+    background: #5D8BF4; /* Cambia el fondo cuando una entrada de radio está seleccionada */
+}
+
+/* Estilo para el contenedor de selección de ataque */
+#seleccionar-ataque {
+    flex-direction: column; /* Establece la dirección de columna para los elementos hijos */
+    align-items: center; /* Centra horizontalmente los elementos hijos */
+}
+
+/* Estilo para los botones de ataque */
+.boton-de-ataque {
+    background-color: #11468F; /* Color de fondo */
+    padding: 10px; /* Espacio interno */
+    box-sizing: border-box; /* Establece el modelo de caja para incluir el relleno en el tamaño total */
+    border-radius: 20px; /* Borde redondeado */
+    border-color: transparent; /* Color del borde transparente */
+    width: 100px; /* Ancho del botón */
+    color: #fff; /* Color de texto en blanco */
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' */
+}
+
+/* Estilo para el contenedor de mensajes */
+#mensajes {
+    width: 280px; /* Ancho del contenedor de mensajes */
+    background: #EEEEEE; /* Color de fondo */
+    padding: 20px; /* Espacio interno */
+    margin-top: 20px; /* Margen superior */
+    border-radius: 20px; /* Borde redondeado */
+    display: flex; /* Usa flexbox para alinear elementos internos */
+    align-items: center; /* Centra verticalmente los elementos internos */
+    flex-direction: column; /* Establece la dirección de columna para los elementos internos */
+}
+
+/* Estilo para el botón de reinicio */
+#boton-reiniciar {
+    border: none; /* Sin borde */
+    color: #11468F; /* Color de texto */
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' */
+}
+
+/* Estilo para el contenedor de ataques */
+.ataques {
+    display: grid; /* Usa un diseño de cuadrícula */
+    grid-template-columns: 100px 100px; /* Dos columnas de igual ancho */
+    color: #fff; /* Color de texto en blanco */
+}
+
+/* Estilo para las vidas del jugador y del enemigo */
+#vidas-jugador, #vidas-enemigo {
+    font-size: 32px; /* Tamaño de fuente */
+    margin-bottom: 0; /* Elimina el margen inferior predeterminado */
+}
+
+/* Estilo para los contenedores de ataques del jugador y del enemigo */
+.ataques-jugador, .ataques-enemigo {
+    display: flex; /* Usa flexbox para alinear elementos internos */
+    flex-direction: column; /* Establece la dirección de columna para los elementos internos */
+    align-items: center; /* Centra horizontalmente los elementos internos */
+}
+
+/* Estilos específicos para pantallas con un ancho máximo de 360px */
+@media (max-width: 360px) {
+    .tarjetas, .tarjetas-ataques {
+        flex-direction: column; /* Cambia a una disposición de columna para tarjetas y tarjetas de ataques */
+    }
 }
