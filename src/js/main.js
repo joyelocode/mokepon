@@ -112,11 +112,11 @@ function seleccionarMascotaJugador() {
     
     
     if (inputHipodoge.checked) {
-        spanMascotaJugador.innerHTML = 'Hipodoge';
+        spanMascotaJugador.innerHTML = inputHipodoge.id;
     } else if (inputCapipepo.checked) {
-        spanMascotaJugador.innerHTML = 'Capipepo';
+        spanMascotaJugador.innerHTML = inputCapipepo.id;
     } else if (inputRatigueya.checked) {
-        spanMascotaJugador.innerHTML = 'Ratigueya';
+        spanMascotaJugador.innerHTML = inputRatigueya.id;
     } else {
         alert('Selecciona una mascota');
     };
@@ -126,16 +126,9 @@ function seleccionarMascotaJugador() {
 
 function seleccionarMascotaEnemigo() {
     
-    let mascotaAleatorio = aleatorio(1, 3);
+    let mascotaAleatorio = aleatorio(0, mokepones.length -1);
     
-    
-    if (mascotaAleatorio == 1) {
-        spanMascotaEnemigo.innerHTML = 'Hipodoge';
-    } else if (mascotaAleatorio == 2) {
-        spanMascotaEnemigo.innerHTML = 'Capipepo';
-    } else {
-        spanMascotaEnemigo.innerHTML = 'Ratigueya';
-    };
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre;
 };
 
 function ataqueAgua() {
