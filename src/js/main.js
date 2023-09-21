@@ -167,14 +167,17 @@ function secuenciaAtaque() {
                 ataqueJugador.push('AGUA');
                 console.log(ataqueJugador);
                 boton.style.background = '#112f58';
+                boton.disabled = true;
             } else if (e.target.textContent === '🌱') {
                 ataqueJugador.push('TIERRA');
                 console.log(ataqueJugador);
                 boton.style.background = '#112f58';
+                boton.disabled = true;
             } else {
                 ataqueJugador.push('FUEGO');
                 console.log(ataqueJugador);
                 boton.style.background = '#112f58';
+                boton.disabled = true;
             };
             ataqueAleatorioEnemigo();
         });
@@ -222,8 +225,6 @@ function combate() {
         if(ataqueJugador[index] === ataqueEnemigo[index]) {
             indexAmbosOponentes(index, index);
             crearMensaje("EMPATE");
-            victoriasJugador++ 
-            spanVidasJugador.innerHTML = victoriasJugador;
         } else if (ataqueJugador[index] === 'FUEGO' && ataqueEnemigo[index] === 'TIERRA') {
             indexAmbosOponentes(index, index)
             crearMensaje("GANASTE")
@@ -276,14 +277,6 @@ function crearMensaje(resultado) {
 function crearMensajeFinal(resultadoFinal) {
     
     sectionMensajes.innerHTML = resultadoFinal;
-
-    
-    botonAgua.disabled = true;
-    
-    botonTierra.disabled = true;
-    
-    botonFuego.disabled = true;
-
     
     sectionReiniciarJuego.style.display = 'block';
 };

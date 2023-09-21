@@ -88,7 +88,7 @@ input:checked + label {
     box-sizing: border-box; /* Establece el modelo de caja para incluir el relleno en el tamaño total */
     border-radius: 20px; /* Borde redondeado */
     border-color: transparent; /* Color del borde transparente */
-    width: 100px; /* Ancho del botón */
+    width: 80px; /* Ancho del botón */
     color: #fff; /* Color de texto en blanco */
     font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' */
 }
