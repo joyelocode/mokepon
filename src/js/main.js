@@ -31,6 +31,8 @@ let botonAgua;
 let botonTierra;
 let botonFuego;
 let botones = [];
+let indexAtaqueJugador;
+let indexAtaqueEnemigo;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
@@ -199,31 +201,30 @@ function ataqueAleatorioEnemigo() {
         ataqueEnemigo.push('FUEGO');
     };
     console.log(ataqueEnemigo);
-
-    combate();
+    iniciarPelea();
 };
 
+function iniciarPelea() {
+    if (ataqueJugador.length === 5) {
+        combate();
+    }
+};
+
+function indexAmbosOponentes(jugador, enemigo) {
+    indexAtaqueJugador = ataqueJugador[jugador];
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo];
+}
 function combate() {
     
-    if (ataqueJugador == ataqueEnemigo) {
-        crearMensaje("EMPATE");
-    } else if (ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
-        crearMensaje("GANASTE");
-        vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = vidasEnemigo;
-    } else if (ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
-        crearMensaje("GANASTE");
-        vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = vidasEnemigo;
-    } else if (ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
-        crearMensaje("GANASTE");
-        vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = vidasEnemigo;
-    } else {
-        crearMensaje("PERDISTE");
-        vidasJugador--;
-        spanVidasJugador.innerHTML = vidasJugador;
+    for (let index = 0; index < ataqueJugador.length; index++) {
+        if(ataqueJugador[index] === ataqueEnemigo[index]) {
+            indexAmbosOponentes(index, index);
+            crearMensaje("EMPATE");
+        };
+        
     };
+    
+   
 
     revisarVidas();
 };
@@ -242,8 +243,8 @@ function crearMensaje(resultado) {
     let nuevoAtaqueDelEnemigo = document.createElement('p');
 
     sectionMensajes.innerHTML = resultado;
-    nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
-    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo;
+    nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador;
+    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo;
 
     ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
