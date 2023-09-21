@@ -19,13 +19,14 @@ const contenedorAtaques = document.getElementById('contenedor-ataques');
 
 let mokepones = [];
 let ataqueJugador = [];
-let ataqueEnemigo;
+let ataqueEnemigo = [];
 let opcionDeMokepones;
 let inputHipodoge;
 let inputCapipepo;
 let inputRatigueya;
 let mascotaJugador;
 let ataquesMokepon;
+let ataquesMokeponEnemigo;
 let botonAgua;
 let botonTierra;
 let botonFuego;
@@ -171,8 +172,10 @@ function secuenciaAtaque() {
                 console.log(ataqueJugador);
                 boton.style.background = '#112f58';
             };
+            ataqueAleatorioEnemigo();
         });
     });
+    
 };
 
 function seleccionarMascotaEnemigo() {
@@ -180,20 +183,22 @@ function seleccionarMascotaEnemigo() {
     let mascotaAleatorio = aleatorio(0, mokepones.length -1);
     
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatorio].nombre;
+    ataquesMokeponEnemigo = mokepones[mascotaAleatorio].ataques;
 
     secuenciaAtaque();
 };
 
 function ataqueAleatorioEnemigo() {
-    let ataqueAleatorio = aleatorio(1,3);
+    let ataqueAleatorio = aleatorio(0,ataquesMokeponEnemigo.length -1);
 
-    if (ataqueAleatorio == 1) {
-        ataqueEnemigo = 'AGUA';
-    } else if (ataqueAleatorio == 2) {
-        ataqueEnemigo = 'TIERRA';
+    if (ataqueAleatorio == 0 || ataqueAleatorio == 1) {
+        ataqueEnemigo.push('AGUA');
+    } else if (ataqueAleatorio == 3 || ataqueAleatorio == 4) {
+        ataqueEnemigo.push('TIERRA');
     } else {
-        ataqueEnemigo = 'FUEGO';
+        ataqueEnemigo.push('FUEGO');
     };
+    console.log(ataqueEnemigo);
 
     combate();
 };
