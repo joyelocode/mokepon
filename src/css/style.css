@@ -132,6 +132,16 @@ input:checked + label {
     align-items: center; /* Centra horizontalmente los elementos internos */
 }
 
+#ver-mapa {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#mapa {
+    border: 2px solid #fff;
+}
+
 /* Estilos específicos para pantallas con un ancho máximo de 360px */
 @media (max-width: 360px) {
     .tarjetas, .tarjetas-ataques {
