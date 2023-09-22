@@ -92,6 +92,14 @@ hipodoge.ataques.push(
     { nombre: '🔥', id: 'boton-fuego' },
 );
 
+hipodogeEnemigo.ataques.push(
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🔥', id: 'boton-fuego' },
+);
+
 capipepo.ataques.push(
     { nombre: '🌱', id: 'boton-tierra' },
     { nombre: '🌱', id: 'boton-tierra' },
@@ -100,7 +108,23 @@ capipepo.ataques.push(
     { nombre: '🔥', id: 'boton-fuego' },
 );
 
+capipepoEnemigo.ataques.push(
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' },
+);
+
 ratigueya.ataques.push(
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🌱', id: 'boton-tierra' },
+);
+
+ratigueyaEnemigo.ataques.push(
     { nombre: '🔥', id: 'boton-fuego' },
     { nombre: '🔥', id: 'boton-fuego' },
     { nombre: '🔥', id: 'boton-fuego' },
@@ -144,12 +168,6 @@ function iniciarJuego() {
 function seleccionarMascotaJugador() {
 
     sectionSeleccionarMascota.style.display = 'none';
-
-    //sectionSeleccionarAtaque.style.display = 'flex';
-
-   
-
-    
     
     if (inputHipodoge.checked) {
         spanMascotaJugador.innerHTML = inputHipodoge.id;
@@ -169,8 +187,6 @@ function seleccionarMascotaJugador() {
     sectionVerMapa.style.display = 'flex';
 
     iniciarMapa();
-    
-    seleccionarMascotaEnemigo();
 };
 
 function extraerAtaques(mascotaJugador) {
@@ -417,8 +433,8 @@ function revisarColision(enemigo) {
     const izquierdaEnemigo = enemigo.x;
 
     const arribaMascota = mascotaJugadorObjeto.y;
-    const abajoMascota = mascotaJugadorObjeto.y + enemigo.alto;
-    const derechaMascota = mascotaJugadorObjeto.x + enemigo.ancho;
+    const abajoMascota = mascotaJugadorObjeto.y + mascotaJugadorObjeto.alto;
+    const derechaMascota = mascotaJugadorObjeto.x + mascotaJugadorObjeto.ancho;
     const izquierdaMascota = mascotaJugadorObjeto.x;
 
     if (
@@ -431,7 +447,10 @@ function revisarColision(enemigo) {
     };
 
     detenerMovimiento();
-    alert('Hay Colision ' + enemigo.nombre);
+    clearInterval(intervalo);
+    sectionSeleccionarAtaque.style.display = 'flex';
+    sectionVerMapa.style.display = 'none';
+    seleccionarMascotaEnemigo(enemigo);
 };
 
 window.addEventListener('load', iniciarJuego);
