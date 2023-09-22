@@ -46,27 +46,43 @@ let mapaBackground = new Image();
 mapaBackground.src = '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/mokemap.png';
 
 class Mokepon {
-    constructor(nombre, foto, vida) {
+    constructor(nombre, foto, vida, fotoMapa, x = 10, y = 10) {
         this.nombre = nombre;
         this.foto = foto;
         this.vida = vida;
         this.ataques = [];
-        this.x = 20;
-        this.y = 30;
-        this.ancho = 80;
-        this.alto = 80;
+        this.x = x;
+        this.y = y;
+        this.ancho = 40;
+        this.alto = 40;
         this.mapaFoto = new Image();
-        this.mapaFoto.src = foto;
+        this.mapaFoto.src = fotoMapa;
         this.velocidadX = 0;
         this.velocidadY = 0;
     };
+
+    pintarMokepon() {
+        lienzo.drawImage(
+            this.mapaFoto,
+            this.x,
+            this.y,
+            this.ancho,
+            this.alto,
+        );
+    };
 };
 
-let hipodoge = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5);
+let hipodoge = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/hipodoge.png');
 
-let capipepo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5);
+let capipepo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/capipepo.png');
 
-let ratigueya = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5);
+let ratigueya = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/ratigueya.png');
+
+let hipodogeEnemigo = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/hipodoge.png', 80, 120);
+
+let capipepoEnemigo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/capipepo.png', 150, 95);
+
+let ratigueyaEnemigo = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/ratigueya.png', 200, 190);
 
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
@@ -326,13 +342,11 @@ function pintarCanvas() {
         mapa.width,
         mapa.height,
     );
-    lienzo.drawImage(
-        mascotaJugadorObjeto.mapaFoto,
-        mascotaJugadorObjeto.x,
-        mascotaJugadorObjeto.y,
-        mascotaJugadorObjeto.ancho,
-        mascotaJugadorObjeto.alto,
-    );
+    
+    mascotaJugadorObjeto.pintarMokepon();
+    hipodogeEnemigo.pintarMokepon();
+    capipepoEnemigo.pintarMokepon();
+    ratigueyaEnemigo.pintarMokepon();
 };
 
 function moverDerecha() {
