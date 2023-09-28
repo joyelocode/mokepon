@@ -138,9 +138,29 @@ input:checked + label {
     justify-content: center;
 }
 
+#ver-mapa button {
+    width: 80px; /* Ancho del botón */
+    height: 40px; /* Altura del botón */
+    border-radius: 20px; /* Borde redondeado */
+    background: transparent; /* Fondo transparente */
+    border: 2px solid #fff; /* Borde sólido blanco */
+    color: #fff; /* Establece el color de texto en blanco */
+    font-family: 'Poppins', sans-serif; /* Aplica la fuente 'Poppins' */
+    margin: 10px 0; /* Margen superior */
+}
+
 /* Estilos específicos para pantallas con un ancho máximo de 360px */
-@media (max-width: 360px) {
+@media (max-width: 560px) {
     .tarjetas, .tarjetas-ataques {
         flex-direction: column; /* Cambia a una disposición de columna para tarjetas y tarjetas de ataques */
     }
 }
+
+@media (max-width: 300px) {
+    #ver-mapa div{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
