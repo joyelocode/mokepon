@@ -132,3 +132,8 @@ dist
 # ignorando img
 
 assets
+
+# ignorando el json
+
+package.json
+package-lock.json
