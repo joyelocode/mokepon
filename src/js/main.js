@@ -43,7 +43,7 @@ let vidasEnemigo = 3;
 let lienzo = mapa.getContext('2d');
 let intervalo;
 let mapaBackground = new Image();
-mapaBackground.src = '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/mokemap.png';
+mapaBackground.src = '/mokepon/src/assets/img/mokemap.png';
 let alturaQueBuscamos 
 let anchoDelMapa = window.innerWidth - 20;
 const anchaMaximoDelMapa = 350;
@@ -84,17 +84,17 @@ class Mokepon {
     };
 };
 
-let hipodoge = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/hipodoge.png');
+let hipodoge = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5, '/mokepon/src/assets/img/hipodoge.png');
 
-let capipepo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/capipepo.png');
+let capipepo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5, '/mokepon/src/assets/img/capipepo.png');
 
-let ratigueya = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/ratigueya.png');
+let ratigueya = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5, '/mokepon/src/assets/img/ratigueya.png');
 
-let hipodogeEnemigo = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/hipodoge.png');
+let hipodogeEnemigo = new Mokepon('Hipodoge', './src/assets/img/mokepons_mokepon_hipodoge_attack.png', 5, '/mokepon/src/assets/img/hipodoge.png');
 
-let capipepoEnemigo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/capipepo.png');
+let capipepoEnemigo = new Mokepon('Capipepo', './src/assets/img/mokepons_mokepon_capipepo_attack.png', 5, '/mokepon/src/assets/img/capipepo.png');
 
-let ratigueyaEnemigo = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5, '//wsl.localhost/Ubuntu/home/joyelo/developer/cursos/programacion-basica/mokepon/src/assets/img/ratigueya.png');
+let ratigueyaEnemigo = new Mokepon('Ratigueya', './src/assets/img/mokepons_mokepon_ratigueya_attack.png', 5, '/mokepon/src/assets/img/ratigueya.png');
 
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
@@ -175,6 +175,20 @@ function iniciarJuego() {
 
 
     botonReiniciar.addEventListener('click', reiniciarJuego);
+
+    unirseAlJuego();
+};
+
+function unirseAlJuego() {
+    fetch('http://localhost:8080/unirse')
+        .then(function (res) {
+            if (res.ok) {
+                res.text()
+                    .then(function (respuesta) {
+                        console.log(respuesta);
+                    });
+            };
+        });
 };
 
 function seleccionarMascotaJugador() {
