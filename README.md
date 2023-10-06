@@ -1,6 +1,6 @@
 # Mokepon Battle Game
 
-![Mokepon Battle Game](https://github.com/joyelocode/mokepon/blob/main/public/assets/img/mokepon-battle.png)
+[![Mokepon Battle Game](https://github.com/joyelocode/mokepon/blob/main/public/assets/img/mokepon-battle.png)](https://joyelocode.github.io/mokepon/)
 
 
 ¡Bienvenido a Mokepon Battle Game! Este es un juego simple de batallas entre Mokepons, donde puedes seleccionar a tu Mokepon, elegir sus ataques y enfrentarte a otros Mokepons en emocionantes combates.
