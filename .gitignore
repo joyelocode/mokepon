@@ -129,9 +129,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# ignorando img
+# visual studio code
 
-assets
+.vscode
 
 # ignorando el json
 
